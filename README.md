@@ -12,7 +12,7 @@ This project involves training a Convolutional Neural Network (CNN) to classify 
 
 ## Dataset
 
-The project uses the **Animals with Attributes 2 (AwA2)** dataset. This dataset consists of images of animals from 50 different classes, each with 1000 images. The images are resized to 128x128 for training and testing.
+The project uses the **Animals with Attributes 2 (AwA2)** dataset. This dataset consists of images of animals from 50 different classes, each with 1000 images. The images are resized to 128x128 pixels for training and testing.
 
 ## Data Augmentation
 
@@ -25,32 +25,25 @@ To improve the model's generalization capabilities, several data augmentation te
 
 ## Model Architecture
 
-The model consists of the following layers:
-- **Convolutional Layers**: Three convolutional layers with increasing filter sizes.
-- **Pooling Layers**: Max pooling layers after each convolutional layer to reduce spatial dimensions.
-- **Fully Connected Layers**: Two fully connected layers to classify the images into 50 different classes.
+The CNN model consists of three convolutional layers followed by fully connected layers to classify the images into 50 different classes. The architecture is as follows:
+- **Convolutional Layer 1**: 3 input channels (RGB) → 32 output channels, kernel size 3x3
+- **Convolutional Layer 2**: 32 input channels → 64 output channels, kernel size 3x3
+- **Convolutional Layer 3**: 64 input channels → 128 output channels, kernel size 3x3
+- **Fully Connected Layer 1**: 128 * 16 * 16 → 512 neurons
+- **Fully Connected Layer 2**: 512 neurons → 50 output classes (one per class in the dataset)
 
-### CNN Architecture:
-- Conv Layer 1: 3 input channels → 32 output channels, kernel size 3x3
-- Conv Layer 2: 32 input channels → 64 output channels, kernel size 3x3
-- Conv Layer 3: 64 input channels → 128 output channels, kernel size 3x3
-- Fully Connected Layer 1: 128 * 16 * 16 → 512 neurons
-- Fully Connected Layer 2: 512 neurons → 50 output classes
+The model also includes **MaxPooling** layers after each convolutional layer to reduce spatial dimensions and aid in feature extraction.
 
 ## Training
 
-The model is trained using:
+The model is trained using the following configurations:
 - **Optimizer**: Adam optimizer with a learning rate of 0.001.
 - **Loss Function**: Cross-Entropy Loss for multi-class classification.
 - **Batch Size**: 32
-- **Epochs**: 20
+- **Epochs**: 10
 
-The model's performance is evaluated by calculating accuracy on both training and test datasets.
+During training, the model's performance is evaluated by calculating accuracy on both the training and test datasets.
 
 ## Results
 
-During the training, both training and test accuracies are logged for each epoch, helping us monitor the model's progress and evaluate its generalization performance on unseen data.
-
-## Setup and Usage
-
-To run this project, clone this repository and ensure the required libraries are installed. You can install the necessary dependencies using:
+Throughout the training process, both the training and test accuracies are logged for each epoch. These results help us monitor the model’s progress and evaluate its ability to generalize on unseen data.
